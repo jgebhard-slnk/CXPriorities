@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Global CX Priority Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+html{-webkit-text-size-adjust:100%}body{margin:0;font-size:15px}[hidden]{display:none!important}img{max-width:100%}
+/* Layout: working board for a 1:1 review — sticky tab bar, summary strip, then grouped rows. Spectralink deck palette. */
+:root{
+  --bg:#FAFAF9; --surface:#FFFFFF; --sunk:#F2F2F0; --line:#E2E1DE; --fg:#2C2B2B; --muted:#6D6E71;
+  --orange:#E4470F; --orange-ink:#C4400F; --orange-soft:#FDEEE7;
+  --green:#038C6E; --green-soft:#E3F3EF; --blue:#00539A; --blue-soft:#E3EDF7;
+  --grey:#58595B; --grey-soft:#ECECEB; --indigo:#5B5FA8; --indigo-soft:#ECECF7;
+  --good:#038C6E; --warn:#B7791F; --warn-soft:#FBF1DE; --bad:#B42318; --bad-soft:#FBE9E7;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:8px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#18191A; --surface:#212223; --sunk:#2A2B2C; --line:#36383A; --fg:#ECEBE9; --muted:#A3A3A0;
+  --orange:#FF6A33; --orange-ink:#FF8657; --orange-soft:#3A2419;
+  --green:#3DC3A0; --green-soft:#16302A; --blue:#5FA3E6; --blue-soft:#172A3D;
+  --grey:#B5B5B2; --grey-soft:#2E2F30; --indigo:#9EA1E8; --indigo-soft:#26273D;
+  --good:#3DC3A0; --warn:#E3B04B; --warn-soft:#352B17; --bad:#F2796B; --bad-soft:#3A1E1B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18191A; --surface:#212223; --sunk:#2A2B2C; --line:#36383A; --fg:#ECEBE9; --muted:#A3A3A0;
+  --orange:#FF6A33; --orange-ink:#FF8657; --orange-soft:#3A2419;
+  --green:#3DC3A0; --green-soft:#16302A; --blue:#5FA3E6; --blue-soft:#172A3D;
+  --grey:#B5B5B2; --grey-soft:#2E2F30; --indigo:#9EA1E8; --indigo-soft:#26273D;
+  --good:#3DC3A0; --warn:#E3B04B; --warn-soft:#352B17; --bad:#F2796B; --bad-soft:#3A1E1B; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:28px 0}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--orange-ink)}
+h1{font-size:clamp(26px,4vw,36px);font-weight:600;letter-spacing:-.01em;margin:4px 0 6px;text-wrap:balance}
+.lede{color:var(--muted);max-width:68ch;margin:0 0 18px}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto}
+nav.tabs a{padding:12px 14px;font-weight:600;font-size:14px;color:var(--muted);text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap}
+nav.tabs a[aria-current="page"]{color:var(--fg);border-bottom-color:var(--orange)}
+nav.tabs a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+main .wrap{padding-block:24px 64px}
+h2{font-size:22px;font-weight:700;margin:0 0 4px;text-wrap:balance}
+h3{font-size:16px;font-weight:700;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 16px;max-width:75ch}
+section+section{margin-top:36px}
+.mono{font-family:var(--f-mono);font-size:12.5px}
+.num{font-variant-numeric:tabular-nums}
+
+/* summary strip */
+.strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:18px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;min-width:0}
+.tile b{display:block;font-size:26px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.tile span{font-size:12.5px;color:var(--muted)}
+.tile.now b{color:var(--orange-ink)}
+@media (max-width:640px){.strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:18px}
+.chipbtn{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:5px 12px;font:600 13px var(--f-body);cursor:pointer}
+.chipbtn[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.status{font-size:13px;color:var(--muted);margin-left:auto}
+
+.bucket{margin-top:22px}
+.bucket-h{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+.bucket-h h3{margin:0;font-size:15px;text-transform:uppercase;letter-spacing:.07em}
+.bucket-h small{color:var(--muted);font-size:13px}
+.rows{display:flex;flex-direction:column;gap:8px}
+.row{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:4px 14px;align-items:start}
+.code{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);padding-top:3px}
+.row .t{font-weight:700;font-size:15.5px}
+.row .s{color:var(--muted);font-size:14px;margin-top:2px}
+.ev{margin-top:8px;font-size:13.5px;background:var(--sunk);border-radius:6px;padding:7px 10px}
+.ev::before{content:"Data · ";font-weight:700;color:var(--fg)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tag{font-size:12px;font-weight:600;border-radius:4px;padding:1px 7px;background:var(--grey-soft);color:var(--grey)}
+.tag.cx{background:var(--green-soft);color:var(--green)} .tag.edu{background:var(--blue-soft);color:var(--blue)}
+.tag.svc{background:var(--orange-soft);color:var(--orange-ink)} .tag.people{background:var(--grey-soft);color:var(--grey)}
+.tag.tools{background:var(--indigo-soft);color:var(--indigo)} .tag.urgent{background:var(--bad-soft);color:var(--bad)}
+.tag.new{background:var(--warn-soft);color:var(--warn)} .tag.plan{background:transparent;border:1px solid var(--line);color:var(--muted)}
+.ctl{display:flex;flex-direction:column;gap:6px;align-items:stretch;min-width:150px}
+.ctl select,.ctl input{font:500 13.5px var(--f-body);padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--fg);width:100%}
+.ctl .mv{display:flex;gap:6px}
+.ctl .mv button{flex:1;font:600 13px var(--f-body);padding:4px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--fg);cursor:pointer}
+.ctl .mv button:disabled{opacity:.35;cursor:default}
+.notes{grid-column:2 / 4;margin-top:6px}
+.notes textarea{width:100%;min-height:38px;resize:vertical;font:14px/1.45 var(--f-body);padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg)}
+.det{margin-top:8px;font-size:13.5px}
+.det summary{cursor:pointer;color:var(--blue);font-weight:600}
+.det ul{margin:6px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:5px}
+.det li{line-height:1.45}
+.dt{display:inline-block;min-width:66px;font-size:11px;font-weight:700;border-radius:4px;padding:1px 6px;margin-right:6px;text-align:center;background:var(--grey-soft);color:var(--grey)}
+.dt-fact{background:var(--blue-soft);color:var(--blue)} .dt-toverify{background:var(--warn-soft);color:var(--warn)} .dt-idea{background:var(--green-soft);color:var(--green)} .dt-target{background:var(--orange-soft);color:var(--orange-ink)}
+.saved{font-size:12px;color:var(--good);height:14px}
+@media (max-width:720px){.row{grid-template-columns:minmax(0,1fr)}.code{padding:0}.ctl{min-width:0;flex-direction:row;flex-wrap:wrap}.ctl>*{flex:1 1 140px}.notes{grid-column:1}}
+.empty{border:1px dashed var(--line);border-radius:var(--r);padding:22px;color:var(--muted);text-align:left}
+
+/* sku tab */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:22px}
+@media (max-width:640px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted);margin:8px 0 14px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.s-sell{background:var(--green)} .s-occ{background:color-mix(in srgb,var(--green) 45%,var(--surface))}
+.s-stop{background:var(--warn)} .s-quoted{background:color-mix(in srgb,var(--bad) 55%,var(--surface))} .s-never{background:var(--line)}
+.bars{display:flex;flex-direction:column;gap:9px}
+.bar{display:grid;grid-template-columns:200px minmax(0,1fr) 44px;gap:10px;align-items:center;font-size:13.5px}
+.bar .track{display:flex;height:20px;border-radius:3px;overflow:hidden;background:var(--sunk)}
+.bar .track span{display:block;height:100%}
+.bar .track span+span{border-left:1px solid var(--surface)}
+@media (max-width:560px){.bar{grid-template-columns:minmax(0,1fr) 40px}.bar .lab{grid-column:1 / 3}}
+.twocol{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+@media (max-width:820px){.twocol{grid-template-columns:minmax(0,1fr)}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;min-width:0}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:7px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700;background:var(--sunk);position:sticky;top:0}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+td.rg{background:color-mix(in srgb,var(--sunk) 60%,transparent)}
+.regtbl td.hl{font-weight:700;color:var(--orange-ink)}
+tr:last-child td{border-bottom:0}
+.pill{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:1px 8px;white-space:nowrap}
+.p-sell{background:var(--green-soft);color:var(--green)} .p-occ{background:var(--sunk);color:var(--fg)}
+.p-stop{background:var(--warn-soft);color:var(--warn)} .p-quoted{background:var(--bad-soft);color:var(--bad)} .p-never{background:var(--sunk);color:var(--muted)}
+.tblctl{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.tblctl input,.tblctl select{font:500 14px var(--f-body);padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--fg)}
+.tblctl input{flex:1 1 220px;min-width:0}
+.scroll{max-height:560px;overflow:auto}
+.note{font-size:13px;color:var(--muted);margin-top:10px;max-width:90ch}
+.trend td.hl{font-weight:700}
+
+/* education */
+.aud{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:820px){.aud{grid-template-columns:minmax(0,1fr)}}
+.aud .card h3{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.aud ul,.card ul{margin:6px 0 0;padding-left:18px}
+.aud li,.card li{margin:3px 0}
+.clarity{font-size:12px;font-weight:700;border-radius:4px;padding:1px 7px}
+.c-low{background:var(--bad-soft);color:var(--bad)} .c-mid{background:var(--warn-soft);color:var(--warn)}
+.lens{margin-top:12px;border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;background:var(--surface)}
+.timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:820px){.timeline{grid-template-columns:minmax(0,1fr)}}
+.heat td.c{text-align:right;font-variant-numeric:tabular-nums;min-width:46px}
+.heat td.c,.heat th.c{padding:6px 7px}
+.heat td.c[data-v]{background:color-mix(in srgb,var(--orange) var(--p),transparent)}
+.heat tr.total td{font-weight:700;border-top:2px solid var(--line)}
+.heat tr.opt td{color:var(--muted);font-style:italic}
+.heat .first,.yt .first{position:sticky;left:0;background:var(--surface);z-index:1;min-width:170px}
+th.first{background:var(--sunk)!important}
+.chg{font-weight:700;white-space:nowrap} .chg.up{color:var(--good)} .chg.dn{color:var(--bad)}
+.yt td.y{text-align:right;font-variant-numeric:tabular-nums;color:var(--fg)} .yt td.y.z{color:var(--line)}
+.timeline .yr{font-family:var(--f-mono);font-size:13px;color:var(--orange-ink);font-weight:500}
+.gap-yr{border-style:dashed;background:transparent}
+ol.qs{padding-left:20px;margin:0} ol.qs li{margin:6px 0}
+</style>
+<script src="data/topics.js"></script>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <div class="eyebrow">Global CX Operations, Education &amp; Services</div>
+  <h1>Priority review with Steffi</h1>
+  <p class="lede">Every topic from the First Priorities deck and the discovery notes, with each note kept under its topic. Sort each one into Now, Next, Later or Park, set an owner and capture notes. Your changes stay in this browser until you click Copy for GitHub and paste them into data/topics.js.</p>
+</div></header>
+<nav class="tabs" aria-label="Sections"><div class="wrap">
+  <a href="#board" data-tab="board">Priorities</a>
+</div></nav>
+
+<main>
+<div class="wrap" id="v-board">
+  <div class="strip" id="strip"></div>
+  <div class="filters" id="filters"></div>
+  <div id="exportBox" class="card" hidden style="margin-bottom:16px"><h3>Copy for GitHub</h3><p class="s" id="exportMsg"></p><textarea id="exportText" readonly style="width:100%;min-height:160px;font:12px/1.4 var(--f-mono);background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:8px"></textarea></div>
+  <div id="board"></div>
+</div>
+
+</main>
+
+<script>
+const GROUPS=["Maintenance (SpectraCare)","Professional services","Software Assurance","Out-of-warranty repairs","AMIE","MS Teams","Licenses"];
+const SNAME={sell:"Selling",occ:"Occasional",stop:"Stopped",quoted:"Quoted, never won",never:"Never on an opportunity"};
+const ORDER=["sell","occ","stop","quoted","never"];
+const BUCKETS=[["now","Now","Start or keep going this quarter"],["next","Next","After the Now items land"],["later","Later","Worth doing, not this half"],["park","Park","Not for us, or not now"],["unsorted","To sort","Not yet discussed"]];
+const PILLARS={cx:"CX Operations & Metrics",edu:"Education & Certification",svc:"Services Portfolio",people:"People",tools:"Tool stack"};
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* single view */
+document.querySelectorAll("nav.tabs a").forEach(a=>a.setAttribute("aria-current","page"));
+/* board — data comes from data/topics.js; edits are kept in this browser until copied back to GitHub */
+const KEY="cx-priority-review.working";
+const FIELDS=["code","bucket","order","owner","notes","title","pillar","urgent","isNew","plan","summary","details"];
+const fileTopics=(window.TOPICS||[]).map((t,i)=>({...t,_id:t.code,order:t.order??i}));
+let topics=load(),pillar="";
+function load(){try{const w=JSON.parse(localStorage.getItem(KEY)||"null");if(w&&w.base===sig(fileTopics))return w.topics;}catch(e){}return fileTopics.map(t=>({...t}));}
+function sig(list){return JSON.stringify(list.map(t=>FIELDS.map(f=>t[f]??"")));}
+function persist(){try{localStorage.setItem(KEY,JSON.stringify({base:sig(fileTopics),topics}));}catch(e){}markDirty();}
+function dirty(){return sig(topics)!==sig(fileTopics);}
+const boardEl=document.getElementById("board"),stripEl=document.getElementById("strip"),filtEl=document.getElementById("filters");
+function drawFilters(){
+  filtEl.innerHTML=[["","All"],...Object.entries(PILLARS)].map(([k,v])=>`<button class="chipbtn" aria-pressed="${pillar===k}" data-p="${k}">${esc(v)}</button>`).join("")+
+   `<span class="status" id="saveStatus"></span><button class="chipbtn" id="exportBtn" type="button">Copy for GitHub</button><button class="chipbtn" id="resetBtn" type="button">Discard my changes</button>`;
+  filtEl.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{pillar=b.dataset.p;drawFilters();drawBoard();});
+  document.getElementById("exportBtn").onclick=exportFile;
+  document.getElementById("resetBtn").onclick=()=>{const b=document.getElementById("resetBtn");if(b.dataset.armed){topics=fileTopics.map(t=>({...t}));try{localStorage.removeItem(KEY);}catch(e){}drawStrip();drawBoard();drawFilters();}else{b.dataset.armed="1";b.textContent="Click again to discard";setTimeout(()=>{if(b.isConnected){delete b.dataset.armed;b.textContent="Discard my changes";}},3000);}};
+  markDirty();}
+function markDirty(){const s=document.getElementById("saveStatus");if(s)s.textContent=dirty()?"Unsaved changes: copy them to data/topics.js in GitHub":"Matches data/topics.js";}
+function drawStrip(){const c={};for(const t of topics)c[t.bucket||"unsorted"]=(c[t.bucket||"unsorted"]||0)+1;
+  stripEl.innerHTML=BUCKETS.map(([k,l])=>`<div class="tile ${k}"><b>${c[k]||0}</b><span>${l}</span></div>`).join("");}
+function drawBoard(){
+  const vis=topics.filter(t=>!pillar||t.pillar===pillar);
+  if(!topics.length){boardEl.innerHTML='<div class="empty">No topics found. Check that data/topics.js is in the repository next to index.html.</div>';return;}
+  boardEl.innerHTML=BUCKETS.map(([k,l,hint])=>{
+    const list=vis.filter(t=>(t.bucket||"unsorted")===k).sort((a,b)=>(a.order??0)-(b.order??0));
+    if(!list.length)return"";
+    return `<div class="bucket"><div class="bucket-h"><h3>${l}</h3><small>${list.length} · ${hint}</small></div><div class="rows">${list.map((t,i)=>row(t,i,list.length)).join("")}</div></div>`;}).join("")||`<div class="empty">No topics in this area.</div>`;
+  boardEl.querySelectorAll("[data-act]").forEach(el=>{
+    const id=el.closest(".row").dataset.id,t=topics.find(x=>x._id===id);
+    if(el.dataset.act==="bucket")el.onchange=()=>{const inB=topics.filter(x=>(x.bucket||"unsorted")===el.value);t.bucket=el.value;t.order=inB.length?Math.max(...inB.map(x=>x.order??0))+1:0;persist();drawStrip();drawBoard();};
+    if(el.dataset.act==="up"||el.dataset.act==="down")el.onclick=()=>{const list=topics.filter(x=>(x.bucket||"unsorted")===(t.bucket||"unsorted")&&(!pillar||x.pillar===pillar)).sort((a,b)=>(a.order??0)-(b.order??0));const i=list.indexOf(t),o=list[i+(el.dataset.act==="up"?-1:1)];if(!o)return;list.forEach((x,k)=>x.order=k);[t.order,o.order]=[o.order,t.order];persist();drawBoard();};
+    if(el.dataset.act==="owner"||el.dataset.act==="notes")el.oninput=()=>{t[el.dataset.act]=el.value;persist();};
+  });}
+function row(t,i,n){
+  return `<div class="row" data-id="${esc(t._id)}">
+    <div class="code">${esc(t.code)}</div>
+    <div><div class="t">${esc(t.title)}</div><div class="s">${esc(t.summary)}</div>
+      ${(t.details&&t.details.length)?`<details class="det"><summary>Discovery notes (${t.details.length})</summary><ul>${t.details.map(d=>`<li><span class="dt dt-${esc((d.type||"").toLowerCase().replace(/[^a-z]/g,""))}">${esc(d.type)}</span> ${esc(d.text)}</li>`).join("")}</ul></details>`:""}
+      <div class="tags"><span class="tag ${t.pillar}">${esc(PILLARS[t.pillar]||t.pillar)}</span>${t.urgent?'<span class="tag urgent">Urgent</span>':""}${t.isNew?'<span class="tag new">New topic</span>':""}${t.plan?`<span class="tag plan">Deck plan: ${esc(t.plan)}</span>`:""}</div></div>
+    <div class="ctl">
+      <select data-act="bucket" aria-label="Bucket for ${esc(t.title)}">${BUCKETS.map(([k,l])=>`<option value="${k}" ${(t.bucket||"unsorted")===k?"selected":""}>${l}</option>`).join("")}</select>
+      <input data-act="owner" placeholder="Owner" aria-label="Owner for ${esc(t.title)}" value="${esc(t.owner||"")}">
+      <div class="mv"><button data-act="up" aria-label="Move up" ${i===0?"disabled":""}>↑</button><button data-act="down" aria-label="Move down" ${i===n-1?"disabled":""}>↓</button></div>
+    </div>
+    <div class="notes"><textarea data-act="notes" placeholder="Notes from the discussion" aria-label="Notes for ${esc(t.title)}">${esc(t.notes||"")}</textarea></div>
+  </div>`;}
+function topicsFile(list){
+  const clean=[...list].sort((a,b)=>BUCKETS.findIndex(x=>x[0]===(a.bucket||"unsorted"))-BUCKETS.findIndex(x=>x[0]===(b.bucket||"unsorted"))||(a.order??0)-(b.order??0))
+    .map((t,i,arr)=>{const o={};const pos=arr.slice(0,i).filter(x=>(x.bucket||"unsorted")===(t.bucket||"unsorted")).length;for(const f of FIELDS)o[f]=f==="order"?pos:(t[f]??(f==="urgent"||f==="isNew"?false:f==="details"?[]:""));return o;});
+  return HEADER+"window.TOPICS = "+JSON.stringify(clean,null,2)+";\n";}
+async function exportFile(){
+  const txt=topicsFile(topics),box=document.getElementById("exportBox"),ta=document.getElementById("exportText");
+  ta.value=txt;box.hidden=false;
+  try{await navigator.clipboard.writeText(txt);document.getElementById("exportMsg").textContent="Copied. In GitHub, open data/topics.js, click the pencil, select all, paste, and commit.";}
+  catch(e){ta.focus();ta.select();document.getElementById("exportMsg").textContent="Select all the text below, copy it, then paste it over data/topics.js in GitHub and commit.";}}
+const HEADER=`// Priority review topics. This file is the shared record.
+// Edit it in GitHub (pencil icon), or use "Copy for GitHub" on the page and paste over this file.
+//   bucket: "now" | "next" | "later" | "park" | "unsorted"
+//   order:  position inside its bucket (0 = top)
+//   pillar: "cx" | "edu" | "svc" | "people" | "tools"
+//   details: one line per note; type is "Fact", "To verify", "Idea" or "Target"
+// Keep the quotes and commas. One { } block per topic.
+`;
+drawFilters();drawStrip();drawBoard();
+</script>
+
+</body>
+</html>

@@ -1,35 +1,10 @@
-// CX priority review topics. This file is the shared record.
+// Priority review topics. This file is the shared record.
 // Edit it in GitHub (pencil icon), or use "Copy for GitHub" on the page and paste over this file.
-//   bucket:  "now" | "next" | "later" | "park" | "unsorted"
-//   order:   position inside its bucket (0 = top)
-//   pillar:  "cx" | "edu" | "svc" | "people" | "tools"
-//   details: one line per note; type is "Fact", "To verify", "Idea" or "Target"
-//   partOf:  "TS" means the topic sits inside the Tool stack strategy project
+//   bucket: "now" | "next" | "later" | "park" | "question" | "unsorted"
+//   order:  position inside its bucket (0 = top)
+//   pillar: "cx" | "edu" | "svc" | "people" | "tools"
 // Keep the quotes and commas. One { } block per topic.
 window.TOPICS = [
-  {
-    "code": "TS",
-    "bucket": "unsorted",
-    "order": -1,
-    "owner": "",
-    "notes": "",
-    "title": "Tool stack strategy",
-    "pillar": "tools",
-    "urgent": false,
-    "isNew": true,
-    "plan": "",
-    "summary": "One project for the whole tool stack: agree the strategy for each tool, then record the selected tool. The full list is in the Tools tab.",
-    "details": [
-      {
-        "type": "Fact",
-        "text": "Tool topics brought into this project: T01, T03, T04, T05, T06, T07, T09, T10, T11, T12. They now sit under the Tools tab."
-      },
-      {
-        "type": "Target",
-        "text": "For every tool: the need, what we use today, the strategy, the selected tool and an owner."
-      }
-    ]
-  },
   {
     "code": "P01",
     "bucket": "unsorted",
@@ -41,53 +16,8 @@ window.TOPICS = [
     "urgent": false,
     "isNew": false,
     "plan": "Days 61–90",
-    "summary": "The welcome letter is clicked and mailed by hand once the PO is processed. Target: a digital welcome kit and an onboarding journey for resellers and end customers, including at renewal.",
-    "details": [
-      {
-        "type": "Fact",
-        "text": "The welcome letter is sent once the PO is processed and sent to the reseller. It also applies when a customer renews."
-      },
-      {
-        "type": "Fact",
-        "text": "It is generated from the Salesforce opportunity for the PO. Someone clicks the welcome letter and mails it out."
-      },
-      {
-        "type": "Fact",
-        "text": "Each opportunity offers four documents: sales quote, Spectralink booking package for maintenance, Spectralink welcome letter for maintenance, sales quote with no prices."
-      },
-      {
-        "type": "Fact",
-        "text": "Quotes go out in MSRP, net, or as the welcome letter."
-      },
-      {
-        "type": "Fact",
-        "text": "The letter confirms the PO was processed, the end user, the term, and the maintenance type purchased."
-      },
-      {
-        "type": "Fact",
-        "text": "Oracle holds the PO, contracts, entitlement and order management. Data flows from Oracle to Salesforce."
-      },
-      {
-        "type": "Fact",
-        "text": "Jessica leads order management, the first point of contact."
-      },
-      {
-        "type": "To verify",
-        "text": "Can Salesforce send the welcome letter automatically? Who receives it: the reseller only, or the end user too?"
-      },
-      {
-        "type": "To verify",
-        "text": "What happens after the letter today?"
-      },
-      {
-        "type": "To verify",
-        "text": "What does 'Oracle outsourced' mean?"
-      },
-      {
-        "type": "Idea",
-        "text": "Digital welcome kit: portal access, how to open a ticket, where to find answers. Entitlement created automatically from the Oracle contract. (Claude)"
-      }
-    ]
+    "summary": "The welcome letter is clicked and mailed by hand. Target: a digital welcome kit and an onboarding journey for resellers and end customers.",
+    "evidence": ""
   },
   {
     "code": "P02",
@@ -100,25 +30,8 @@ window.TOPICS = [
     "urgent": false,
     "isNew": false,
     "plan": "Days 31–60",
-    "summary": "AI built into our tools and processes. Today only a Zendesk chatbot and knowledge articles for EMEA managed services. Training people to use AI is P17.",
-    "details": [
-      {
-        "type": "Fact",
-        "text": "Zendesk (EMEA managed services only) has a chatbot and knowledge articles."
-      },
-      {
-        "type": "Fact",
-        "text": "Most support runs through email; welcome letters and renewals are manual steps."
-      },
-      {
-        "type": "Idea",
-        "text": "AI uses kept on the list: ticket intake and routing, agent assist, knowledge creation from resolved tickets, self-service deflection, translation, education (AI video, quizzes)."
-      },
-      {
-        "type": "To verify",
-        "text": "Which AI tools has IT approved? Who owns the budget for new tools? Which processes are the most manual?"
-      }
-    ]
+    "summary": "Only a Zendesk chatbot for EMEA managed services today. Target: ticket triage, agent assist, and knowledge drafted from resolved tickets.",
+    "evidence": ""
   },
   {
     "code": "P03",
@@ -131,49 +44,8 @@ window.TOPICS = [
     "urgent": false,
     "isNew": false,
     "plan": "Days 0–90",
-    "summary": "Support runs mainly on email; regional addresses route to one shared inbox. Target: one global front door with queues by skill, regardless of region. The platform choice is P03b.",
-    "details": [
-      {
-        "type": "Fact",
-        "text": "Set as the September focus, including the ticket system. Ticketing 'is a mess'."
-      },
-      {
-        "type": "Fact",
-        "text": "Three support levels: Software Assurance, SpectraCare and SpectraCare+."
-      },
-      {
-        "type": "Fact",
-        "text": "Each regional team has its own email address, but all route to the same shared inbox."
-      },
-      {
-        "type": "Target",
-        "text": "Queues: order management, L1, RMA, Wi-Fi L2/L3, DECT L2/L3. Team members join queues regardless of region."
-      },
-      {
-        "type": "Fact",
-        "text": "Costa Rica L1 is under Rick: Axius, 3 people doing order management and L1. The order management person works EMEA hours, so they offer L1 then too."
-      },
-      {
-        "type": "To verify",
-        "text": "Confirm Axius details with Rick."
-      },
-      {
-        "type": "Fact",
-        "text": "In Europe, resellers do L1 and L2 because of localization and language."
-      },
-      {
-        "type": "To verify",
-        "text": "Entitlement to submit a ticket appears to be a manual check. How does it work today?"
-      },
-      {
-        "type": "Fact",
-        "text": "After hours is covered separately (see T07)."
-      },
-      {
-        "type": "Fact",
-        "text": "CX does not own RMA; Jami does (see T08)."
-      }
-    ]
+    "summary": "Support runs on email into a shared inbox, with regional addresses. Target: one global front door, queues by skill (order management, L1, RMA, Wi-Fi and DECT L2/L3), the RMA handoff and a new after-hours model. The platform itself is P03b.",
+    "evidence": ""
   },
   {
     "code": "P03b",
@@ -186,33 +58,8 @@ window.TOPICS = [
     "urgent": false,
     "isNew": true,
     "plan": "Days 61–90",
-    "summary": "Cases are spread across the Salesforce portal, Zoho (North America L1/L2), Zendesk (EMEA managed services) and a shared email inbox. Target: one platform and one global portal. To decide: which platform, and the migration order.",
-    "details": [
-      {
-        "type": "Fact",
-        "text": "The support portal is hosted in Salesforce."
-      },
-      {
-        "type": "Fact",
-        "text": "The North America leader says emails come in as tickets in Zoho."
-      },
-      {
-        "type": "Fact",
-        "text": "Zendesk is used in EMEA only for co-managed accounts, such as Nestlé, which get more attention and detail."
-      },
-      {
-        "type": "Target",
-        "text": "One global portal, one entry system."
-      },
-      {
-        "type": "Target",
-        "text": "Every ticket captures: entitlement and support level; point of sale (reseller); distributor or reseller; region (North America or EMEA) and where they contact us from; product (Wi-Fi, DECT, software); end customer when known; CSAT on close."
-      },
-      {
-        "type": "Target",
-        "text": "One survey process matched to the agent, inside the tool (see T06)."
-      }
-    ]
+    "summary": "Today cases are spread across the Salesforce portal, Zoho (North America L1/L2), Zendesk (EMEA managed services) and a shared email inbox. Target: one platform for the portal, email-to-case, queues by skill, automatic entitlement checks, knowledge and CSAT. To decide: which platform, and the migration order.",
+    "evidence": ""
   },
   {
     "code": "P04",
@@ -220,42 +67,13 @@ window.TOPICS = [
     "order": 4,
     "owner": "",
     "notes": "",
-    "title": "Authorized to Fix, authorized partners",
+    "title": "Partner strategy: what partners are authorized and certified to do",
     "pillar": "edu",
     "urgent": false,
     "isNew": false,
     "plan": "Days 31–60",
-    "summary": "Contracts require partners to be trained, not certified, so there's no advantage to certifying. Proposed: Authorized to Sell, Deploy and Fix, tied to the channel program.",
-    "details": [
-      {
-        "type": "Fact",
-        "text": "Certification has become less important over the last few years. The contract says partners should be at least trained; it doesn't specify certification."
-      },
-      {
-        "type": "Fact",
-        "text": "Legacy partners can deploy. Many new ones have no idea, so they ask us to do the services."
-      },
-      {
-        "type": "Fact",
-        "text": "We no longer have official education on whether partners are certified to install."
-      },
-      {
-        "type": "Idea",
-        "text": "Train partners on site surveys and products, and on how to fix our products: 'authorized to fix' and 'authorized to sell'."
-      },
-      {
-        "type": "Idea",
-        "text": "Middle tier 'Authorized to Deploy' (site surveys, installation). (Claude)"
-      },
-      {
-        "type": "Idea",
-        "text": "Tie authorization to the channel program, as the July 1 update did with end-customer data."
-      },
-      {
-        "type": "To verify",
-        "text": "In EMEA, contracts are with the 28 distributors, not resellers. How would authorization be enforced?"
-      }
-    ]
+    "summary": "The overall partner strategy: what partners are certified and authorized to do, and what Spectralink keeps. Contracts require training, not certification. Proposed: Authorized to Sell, Deploy and Fix, tied to the channel program. Partner education needs follow from this.",
+    "evidence": ""
   },
   {
     "code": "P05",
@@ -268,29 +86,8 @@ window.TOPICS = [
     "urgent": true,
     "isNew": false,
     "plan": "Days 31–60",
-    "summary": "No auto-renewal today. Target: auto-renewal as the default term, reminders to partners before the end date, one renewal forecast across regions.",
-    "details": [
-      {
-        "type": "Fact",
-        "text": "Flagged urgent ('!!!')."
-      },
-      {
-        "type": "Fact",
-        "text": "In EMEA our contracts are with the 28 distributors, not the resellers, so contract terms there decide what is possible."
-      },
-      {
-        "type": "Fact",
-        "text": "Oracle holds contracts and entitlement; Salesforce holds opportunities."
-      },
-      {
-        "type": "To verify",
-        "text": "What is our renewal rate today?"
-      },
-      {
-        "type": "To verify",
-        "text": "Do distributor and reseller contracts allow auto-renewal? Which system triggers it: Oracle or Salesforce? What do Legal and Finance need to sign off?"
-      }
-    ]
+    "summary": "No auto-renewal today. Target: auto-renewal as the default term, reminders before end date, one renewal forecast across regions.",
+    "evidence": ""
   },
   {
     "code": "P06",
@@ -303,65 +100,8 @@ window.TOPICS = [
     "urgent": false,
     "isNew": false,
     "plan": "Days 31–60",
-    "summary": "Education today is a few videos and an LMS. Target: role-based paths for end users, super users, partners and employees, built with learning design, plus an AI video tool. Partner strategy decision needed.",
-    "details": [
-      {
-        "type": "Fact",
-        "text": "Big problem: there are 4 videos in total, dating back to 2013. Each section is 20+ minutes of talking over a PowerPoint. No learning theory or strategy has been applied."
-      },
-      {
-        "type": "Fact",
-        "text": "Bus (North America technical trainer, on the team) makes videos, all published in the LMS. There is a YouTube channel, but it isn't Bus's."
-      },
-      {
-        "type": "Fact",
-        "text": "Partner technical training 'lost its fizzle' before COVID. There's no benefit or reason for partners to train, so new partners are less capable and ask us to do the services."
-      },
-      {
-        "type": "Fact",
-        "text": "Past curriculum: sales overview, an SE-type session, full technical training (Wi-Fi, by Bus), whole-picture deployment, and EMM."
-      },
-      {
-        "type": "Fact",
-        "text": "Partners say training costs too much time and money, and the product is too complicated (Versity on Android especially)."
-      },
-      {
-        "type": "Fact",
-        "text": "North America: we do all EMM provisioning and aren't open to training partners on it; it locks the phone and prevents customers adding anything. We do the AMIE setup; partners scan QR codes to activate."
-      },
-      {
-        "type": "Fact",
-        "text": "Bus recommends focusing on end users and their workflows. End users need to learn the product; super users need to add and remove phones."
-      },
-      {
-        "type": "Fact",
-        "text": "We partner with ProMix, clinical consultants. Bus suggests CHS as the pilot."
-      },
-      {
-        "type": "Idea",
-        "text": "QR code for end users, or a video pushed into the Android app. Ask David H. how heavy a lift that is."
-      },
-      {
-        "type": "Idea",
-        "text": "We definitely need an AI video tool."
-      },
-      {
-        "type": "Idea",
-        "text": "Make product guides (e.g. 84-Series) useful beyond large PDFs."
-      },
-      {
-        "type": "To verify",
-        "text": "Strategy: do the services for partners, or enable them? If we enable them, how do we enforce it? Why is it 'too cumbersome to maintain' if we have a good system?"
-      },
-      {
-        "type": "To verify",
-        "text": "Why is end-user and super-user training the only focus in North America? What does EMEA train today?"
-      },
-      {
-        "type": "To verify",
-        "text": "Do we have authoring software like Articulate? Ask IT. Which LMS is it, and who can access it?"
-      }
-    ]
+    "summary": "An LMS with trainer videos, a separate YouTube channel, no authoring tool known. Includes defining education needs by audience: end users and super users/admins are clear; partner needs wait on the partner strategy (P04). Quick links to how-to education on the phone: an app on the smartphone, QR codes for older phones. Plus an AI video tool.",
+    "evidence": ""
   },
   {
     "code": "P07",
@@ -374,13 +114,8 @@ window.TOPICS = [
     "urgent": false,
     "isNew": false,
     "plan": "",
-    "summary": "The current program 'sucks' and needs a revamp. Target: entry criteria, fixed duration, success measures agreed up front, a path to purchase, one owner.",
-    "details": [
-      {
-        "type": "To verify",
-        "text": "How many PoCs ran last year, and how many converted? Who owns PoCs: Sales, Professional Services or CX? What goes wrong most often?"
-      }
-    ]
+    "summary": "The current program is not working. Target: entry criteria, fixed duration, success measures agreed up front, one owner.",
+    "evidence": ""
   },
   {
     "code": "P08",
@@ -393,21 +128,8 @@ window.TOPICS = [
     "urgent": false,
     "isNew": false,
     "plan": "Days 61–90",
-    "summary": "538 service SKUs, many duplicated: the same SKU, for Europe. Target: global SKUs where possible, retire SKUs with no sales, one naming standard.",
-    "details": [
-      {
-        "type": "Fact",
-        "text": "Opportunity to move to global SKUs."
-      },
-      {
-        "type": "To verify",
-        "text": "How is each SKU actually used? Analysis done in the Service SKU review deck (internal)."
-      },
-      {
-        "type": "To verify",
-        "text": "Who approves SKU changes: Finance, Product or Sales Ops?"
-      }
-    ]
+    "summary": "Hundreds of service SKUs, many duplicated for Europe. Target: global SKUs where possible, retire SKUs with no sales, one naming standard.",
+    "evidence": ""
   },
   {
     "code": "P09",
@@ -415,22 +137,13 @@ window.TOPICS = [
     "order": 9,
     "owner": "",
     "notes": "",
-    "title": "CX homepage",
+    "title": "Set up SharePoint for all of CX",
     "pillar": "cx",
     "urgent": false,
     "isNew": false,
     "plan": "Days 31–60",
-    "summary": "One home on SharePoint for the global CX team: processes, org chart, contacts, links to every CX tool and the service catalog.",
-    "details": [
-      {
-        "type": "Fact",
-        "text": "Planned on SharePoint (the intranet item on the tool list)."
-      },
-      {
-        "type": "To verify",
-        "text": "Who is it for: CX only, or Sales too? What content exists to move in? Who maintains it?"
-      }
-    ]
+    "summary": "Set up SharePoint as the home for all of global CX: processes, org chart, contacts, links to every CX tool and the service catalog.",
+    "evidence": ""
   },
   {
     "code": "P10",
@@ -443,29 +156,8 @@ window.TOPICS = [
     "urgent": false,
     "isNew": false,
     "plan": "Days 31–60",
-    "summary": "No catalog in one place. Target: what each service includes, who delivers it, price, and a clear split between Spectralink and partners, plus a home for global SKUs and quoting.",
-    "details": [
-      {
-        "type": "Fact",
-        "text": "Simon covers RMA, orders and managed services."
-      },
-      {
-        "type": "Fact",
-        "text": "Managed services: basic support 8 to 5, firmware updates, QBRs, management reviews, customer projects, site surveys, cabling, bills of material (sent to the partner)."
-      },
-      {
-        "type": "Fact",
-        "text": "Partners should be doing this, but we do it for some big accounts."
-      },
-      {
-        "type": "Fact",
-        "text": "Tool list item: service catalog and quoting (likely Salesforce)."
-      },
-      {
-        "type": "To verify",
-        "text": "How do Simon's and Jami's RMA roles split? Which services sell most? Who owns service pricing?"
-      }
-    ]
+    "summary": "No catalog in one place. Target: what each service includes, who delivers it, price, and a clear split between Spectralink and partners.",
+    "evidence": ""
   },
   {
     "code": "P11",
@@ -478,17 +170,8 @@ window.TOPICS = [
     "urgent": false,
     "isNew": false,
     "plan": "Days 31–60",
-    "summary": "NST is the discount process; Aarthie handles all incoming POs and NST discounts. Target: one documented process with approval levels, tracked in Salesforce, the same in every region.",
-    "details": [
-      {
-        "type": "Fact",
-        "text": "Aarthie (Europe): contract services, forecasting, pipeline management, professional services, incoming POs, NST discounts."
-      },
-      {
-        "type": "To verify",
-        "text": "How many NST requests a month? Who approves, and how long does it take? Does North America run the same process?"
-      }
-    ]
+    "summary": "Incoming POs and NST discounts are handled by contract services in Europe; steps and cycle time are not mapped. Target: one documented process with approval levels.",
+    "evidence": ""
   },
   {
     "code": "P12",
@@ -496,26 +179,13 @@ window.TOPICS = [
     "order": 12,
     "owner": "",
     "notes": "",
-    "title": "Data & metrics",
+    "title": "Data & metrics, starting with support",
     "pillar": "cx",
     "urgent": false,
     "isNew": false,
     "plan": "Days 0–30",
-    "summary": "No baseline for tickets, CSAT, renewals or deployments. Target: first KPIs baselined consistently across regions.",
-    "details": [
-      {
-        "type": "Fact",
-        "text": "We can't see where our deployments are. We don't know in EMEA."
-      },
-      {
-        "type": "Idea",
-        "text": "First KPIs: ticket volume, time to resolve, CSAT, renewal rate, service attach rate, certified partners. (Claude)"
-      },
-      {
-        "type": "To verify",
-        "text": "Has professional services volume gone up? Ticket volumes by queue, product and partner?"
-      }
-    ]
+    "summary": "No consistent baseline for tickets, CSAT, renewals or deployments. Start with support metrics, then extend across regions.",
+    "evidence": ""
   },
   {
     "code": "P13",
@@ -523,41 +193,13 @@ window.TOPICS = [
     "order": 13,
     "owner": "",
     "notes": "",
-    "title": "Set up ClickUp for the CHS project",
+    "title": "Demo ClickUp for project management: pilot customer project and travel calendar",
     "pillar": "cx",
     "urgent": true,
     "isNew": false,
     "plan": "Days 0–30",
-    "summary": "ClickUp is the chosen project tool; pilot it with the CHS project, but get ClickUp going. Target: CHS fully tracked, a standard CX project template, then all priorities in ClickUp.",
-    "details": [
-      {
-        "type": "Fact",
-        "text": "Flagged urgent ('!!')."
-      },
-      {
-        "type": "To verify",
-        "text": "Who is on the CHS project team? How many licences, and who pays? When does the pilot end, and how do we judge it?"
-      }
-    ]
-  },
-  {
-    "code": "P14",
-    "bucket": "unsorted",
-    "order": 14,
-    "owner": "",
-    "notes": "",
-    "title": "Forecasting: does it stay with Kieron?",
-    "pillar": "cx",
-    "urgent": false,
-    "isNew": false,
-    "plan": "",
-    "summary": "Open question from the handwritten list. Aarthie also covers forecasting and pipeline for contract services in Europe. Target: one owner per forecast and one method.",
-    "details": [
-      {
-        "type": "To verify",
-        "text": "What does Kieron forecast today? Where does it overlap with Aarthie? Where should it sit once auto-renewal is live?"
-      }
-    ]
+    "summary": "Demo ClickUp for project management, starting with a pilot customer project and a travel calendar (who is on site, and when, for services projects). Linked to the tool strategy.",
+    "evidence": ""
   },
   {
     "code": "P15",
@@ -565,18 +207,13 @@ window.TOPICS = [
     "order": 15,
     "owner": "",
     "notes": "",
-    "title": "Employee development",
+    "title": "Employee professional development",
     "pillar": "people",
     "urgent": false,
     "isNew": false,
     "plan": "Days 0–30",
-    "summary": "Starting with a development plan with Annie. Target: a plan for every team member and a skills map against the new operating model.",
-    "details": [
-      {
-        "type": "To verify",
-        "text": "Which roles change with the new operating model? Is there budget for training and certification?"
-      }
-    ]
+    "summary": "1) Survey the team on what professional development means to them. 2) Analyze it and build a learning plan. 3) Develop learning or find external offerings, with several options. 4) Run the survey again 12–18 months later.",
+    "evidence": ""
   },
   {
     "code": "P16",
@@ -584,18 +221,13 @@ window.TOPICS = [
     "order": 16,
     "owner": "",
     "notes": "",
-    "title": "SharePoint cleanup and redesign",
+    "title": "Professional services & support SharePoint cleanup and data retention policy",
     "pillar": "cx",
     "urgent": false,
     "isNew": false,
     "plan": "",
-    "summary": "SharePoint needs a cleanup and redesign ('yay!'), before the CX homepage goes live.",
-    "details": [
-      {
-        "type": "To verify",
-        "text": "How many CX sites and libraries exist? What can we delete, and who signs off? What are IT's rules?"
-      }
-    ]
+    "summary": "Clean up the professional services and support SharePoint content and set a data retention policy, including the cleanup of a large data migration (content older than 10 years can be deleted; IT will delete it).",
+    "evidence": ""
   },
   {
     "code": "P17",
@@ -603,68 +235,27 @@ window.TOPICS = [
     "order": 17,
     "owner": "",
     "notes": "",
-    "title": "AI training and promotion",
+    "title": "AI use, promotion & training",
     "pillar": "edu",
     "urgent": false,
     "isNew": false,
     "plan": "",
-    "summary": "Helping people use AI well, and want to. Under 40% of employees ever logged in to LinkedIn Learning, so access alone doesn't drive use.",
-    "details": [
-      {
-        "type": "Idea",
-        "text": "Role-based training on real tasks, a prompt library, AI champions per team, tracking usage and time saved. (Claude)"
-      },
-      {
-        "type": "To verify",
-        "text": "Who is it for: CX, all employees, or partners too? Who owns AI policy?"
-      }
-    ]
+    "summary": "Identify AI use cases, promote AI and train the team. One form to submit AI requests; analyze each request; if approved, pilot it and track results; then decide whether to keep it.",
+    "evidence": ""
   },
   {
-    "code": "P18",
+    "code": "P19",
     "bucket": "unsorted",
-    "order": 18,
+    "order": 31,
     "owner": "",
     "notes": "",
-    "title": "On-site and travel visibility",
-    "pillar": "svc",
+    "title": "Knowledge management strategy",
+    "pillar": "cx",
     "urgent": false,
     "isNew": true,
     "plan": "",
-    "summary": "We need clarity on who is on site and when, for services project management: visibility of who is traveling, and when.",
-    "details": [
-      {
-        "type": "Target",
-        "text": "One shared view of on-site visits and travel per services project, linked to ClickUp."
-      },
-      {
-        "type": "To verify",
-        "text": "Where is travel booked and approved today? Who needs to see it?"
-      }
-    ]
-  },
-  {
-    "code": "N19",
-    "bucket": "unsorted",
-    "order": 19,
-    "owner": "",
-    "notes": "",
-    "title": "Define education needs by audience",
-    "pillar": "edu",
-    "urgent": false,
-    "isNew": true,
-    "plan": "",
-    "summary": "Unclear what partners and employees need. Customers split into IT admins, super users and end users, with clinical workflow as the healthcare lens.",
-    "details": [
-      {
-        "type": "To verify",
-        "text": "Is clinical workflow consulting ours to sell, or ProMix's?"
-      },
-      {
-        "type": "To verify",
-        "text": "Which employee roles get a learning path first?"
-      }
-    ]
+    "summary": "An overall knowledge management strategy: where and who creates knowledge articles, how they're maintained, moving from PDFs to digital, searchable formats, and AI chat. Today knowledge is spread across PDFs, several websites and tools.",
+    "evidence": ""
   },
   {
     "code": "N20",
@@ -677,21 +268,8 @@ window.TOPICS = [
     "urgent": false,
     "isNew": true,
     "plan": "",
-    "summary": "On the spoken key-topics list. Contract services, forecasting and pipeline sit with Aarthie in Europe; Salesforce holds the renewal opportunities and Oracle the contracts.",
-    "details": [
-      {
-        "type": "Fact",
-        "text": "Oracle: PO, contracts, entitlement, order management. Salesforce: opportunities. Data flows Oracle to Salesforce."
-      },
-      {
-        "type": "Fact",
-        "text": "Tool list item: renewals and customer success (reminders, auto-renewal, QBRs, account health)."
-      },
-      {
-        "type": "To verify",
-        "text": "'We have way more information we need to gather.' Renewal analysis is in the Service SKU review deck (internal)."
-      }
-    ]
+    "summary": "Renewals: quoting and reporting in Salesforce; POs, contracts and invoicing in Oracle. Many EMEA renewals bypass Salesforce opportunities today, so the pipeline isn't fully visible. A proposed future process is mapped.",
+    "evidence": ""
   },
   {
     "code": "N21",
@@ -699,177 +277,102 @@ window.TOPICS = [
     "order": 21,
     "owner": "",
     "notes": "",
-    "title": "Channel model and end-customer visibility",
+    "title": "Customer journey and touchpoints",
     "pillar": "cx",
     "urgent": false,
     "isNew": true,
     "plan": "",
-    "summary": "We never sell direct and don't install: partners do. In EMEA we don't know our end users or deployments. Target: a plan to know end users in Europe.",
-    "details": [
-      {
-        "type": "Fact",
-        "text": "We sell to distributors or resellers. Partners install."
-      },
-      {
-        "type": "Fact",
-        "text": "EMEA has 28 distributors (USA: 2 or 3). In EMEA, contracts are with distributors only. 800+ resellers, treated as our customers."
-      },
-      {
-        "type": "Fact",
-        "text": "In the USA we know who bought phones from distributors and resellers. The CSM works with partners everywhere."
-      },
-      {
-        "type": "Fact",
-        "text": "July 1 channel program update: 40% partner discount, plus 8% if partners share end-customer information."
-      },
-      {
-        "type": "To verify",
-        "text": "'It's going to be a plan.' What should partners sell (the revamp)?"
-      }
-    ]
+    "summary": "Map out the customer journey and every touchpoint customers and partners have with us, including Partner Universe (the partner portal). We sell through partners, who also install; in EMEA we don't know our end users or deployments.",
+    "evidence": ""
   },
   {
     "code": "T01",
     "bucket": "unsorted",
-    "order": 22,
+    "order": 20,
     "owner": "",
     "notes": "",
-    "title": "Connect the tool stack to Salesforce or Oracle data",
+    "title": "Ticketing integration: Salesforce or Oracle for entitlement",
     "pillar": "tools",
     "urgent": false,
     "isNew": false,
     "plan": "",
-    "summary": "Connect the dots across project management, ticketing and the rest. Every tool reads customer, contract and entitlement data from Salesforce or Oracle, depending on the tool and what we've purchased or are entitled to use.",
-    "details": [
-      {
-        "type": "To verify",
-        "text": "Which Salesforce and Oracle licences and modules do we own? Who owns integrations: IT or CX?"
-      }
-    ],
-    "partOf": "TS"
-  },
-  {
-    "code": "T02",
-    "bucket": "unsorted",
-    "order": 23,
-    "owner": "",
-    "notes": "",
-    "title": "Clean up the 2 TB data migration",
-    "pillar": "tools",
-    "urgent": false,
-    "isNew": false,
-    "plan": "",
-    "summary": "Rick had us migrate 2 TB of data and IT wants it cleaned up. Rick isn't doing the cleanup (a miscommunication). Anything older than 10 years can be deleted; Mark from IT will delete it.",
-    "details": [
-      {
-        "type": "To verify",
-        "text": "Where does the 2 TB live? Who decides what under 10 years old to keep? Any retention rules? When will Mark finish?"
-      }
-    ]
+    "summary": "Identify which system, Salesforce or Oracle, needs to be integrated into the ticketing system so we have entitlement information on every ticket.",
+    "evidence": ""
   },
   {
     "code": "T03",
     "bucket": "unsorted",
-    "order": 24,
+    "order": 22,
     "owner": "",
     "notes": "",
-    "title": "Single sign-on",
+    "title": "Guest access to our platforms: process and policy",
     "pillar": "tools",
     "urgent": false,
     "isNew": false,
     "plan": "",
-    "summary": "One login for the portal, knowledge, LMS and partner portal.",
-    "details": [],
-    "partOf": "TS"
+    "summary": "Identify the process and policy (if any) for guest access to our platforms, including whether we have single sign-on (SSO).",
+    "evidence": ""
   },
   {
     "code": "T04",
     "bucket": "unsorted",
-    "order": 25,
+    "order": 23,
     "owner": "",
     "notes": "",
-    "title": "Install base and entitlement",
+    "title": "Source of truth for entitlements and device usage",
     "pillar": "tools",
     "urgent": false,
     "isNew": false,
     "plan": "",
-    "summary": "Which end customer has which devices and contracts. Need to figure out if it lives in Salesforce or Oracle; ticketing needs it to check entitlement.",
-    "details": [],
-    "partOf": "TS"
-  },
-  {
-    "code": "T05",
-    "bucket": "unsorted",
-    "order": 26,
-    "owner": "",
-    "notes": "",
-    "title": "Partner portal",
-    "pillar": "tools",
-    "urgent": false,
-    "isNew": false,
-    "plan": "",
-    "summary": "Partner Universe overlaps with the support portal. Decide whether to merge or connect.",
-    "details": [
-      {
-        "type": "Fact",
-        "text": "Correction: there is one partner portal, Partner Universe. 'Partner Access portal' in the 2020 brand book may be the same site."
-      }
-    ],
-    "partOf": "TS"
+    "summary": "Identify the source of truth for entitlements and device usage (Salesforce or Oracle). Ticketing needs it to check entitlement.",
+    "evidence": ""
   },
   {
     "code": "T06",
     "bucket": "unsorted",
-    "order": 27,
+    "order": 25,
     "owner": "",
     "notes": "",
-    "title": "CSAT and surveys",
+    "title": "CX CSAT and survey strategy",
     "pillar": "tools",
     "urgent": false,
     "isNew": false,
     "plan": "",
-    "summary": "Surveys are set up per agent in SurveyMonkey, which makes analytics very hard. Target: one smooth process that runs the survey and matches it to the agent.",
-    "details": [],
-    "partOf": "TS"
+    "summary": "A CX-wide CSAT and survey strategy. Today surveys are set up per agent, which makes analytics very hard. Target: one process that runs the survey and matches it to the agent.",
+    "evidence": ""
   },
   {
     "code": "T07",
     "bucket": "unsorted",
-    "order": 28,
+    "order": 26,
     "owner": "",
     "notes": "",
-    "title": "After-hours and on-call model",
+    "title": "Review the after-hours and on-call model",
     "pillar": "tools",
     "urgent": false,
     "isNew": false,
     "plan": "",
-    "summary": "After hours is MoneyPenny, for all priorities: they call people until someone answers. 'A mess' that 'doesn't really make sense'. Target: priority-based paging tied to tickets.",
-    "details": [],
-    "partOf": "TS"
+    "summary": "Review the after-hours and on-call model. Today an outside answering service calls people for all priorities until someone answers. Target: priority-based paging tied to tickets.",
+    "evidence": ""
   },
   {
     "code": "T08",
     "bucket": "unsorted",
-    "order": 29,
+    "order": 27,
     "owner": "",
     "notes": "",
-    "title": "RMA requests: agree the process with Jami",
+    "title": "Understand the RMA process for the support portal revamp",
     "pillar": "cx",
     "urgent": false,
     "isNew": false,
     "plan": "",
-    "summary": "Big note: we don't own the RMA process; Jami does. Work with Jami on how CX requests RMA support.",
-    "details": [
-      {
-        "type": "To verify",
-        "text": "How do Simon's and Jami's roles split?"
-      }
-    ]
+    "summary": "We don't own the RMA process, but need to understand it: RMA will need to be revamped in the support portal and the Excel sheets removed.",
+    "evidence": ""
   },
   {
     "code": "T09",
     "bucket": "unsorted",
-    "order": 30,
+    "order": 28,
     "owner": "",
     "notes": "",
     "title": "Localization and translation",
@@ -877,29 +380,8 @@ window.TOPICS = [
     "urgent": false,
     "isNew": false,
     "plan": "",
-    "summary": "Knowledge and training in EMEA partners' languages.",
-    "details": [],
-    "partOf": "TS"
-  },
-  {
-    "code": "T10",
-    "bucket": "unsorted",
-    "order": 31,
-    "owner": "",
-    "notes": "",
-    "title": "Knowledge and self-service",
-    "pillar": "tools",
-    "urgent": false,
-    "isNew": true,
-    "plan": "",
-    "summary": "Knowledge is PDFs on the Salesforce portal (not searchable), Zendesk articles, Partner Universe, spectralink.com and the support website. Target: technical bulletins, guides and self-service knowledge in one searchable place.",
-    "details": [
-      {
-        "type": "To verify",
-        "text": "Guides may be shared on several different pages. Where are they published?"
-      }
-    ],
-    "partOf": "TS"
+    "summary": "Knowledge and training in EMEA partners' languages, with AI translation on the global portal.",
+    "evidence": ""
   },
   {
     "code": "T11",
@@ -913,13 +395,7 @@ window.TOPICS = [
     "isNew": true,
     "plan": "",
     "summary": "Education in the LMS plus quick learning outside it. Content is video-focused; no learning software like Articulate as far as we know. We need an AI video tool.",
-    "details": [
-      {
-        "type": "To verify",
-        "text": "Confirm authoring tools with IT. Which AI video tool?"
-      }
-    ],
-    "partOf": "TS"
+    "evidence": ""
   },
   {
     "code": "T12",
@@ -933,8 +409,7 @@ window.TOPICS = [
     "isNew": true,
     "plan": "",
     "summary": "One KPI layer across Oracle, Salesforce and ticketing, so metrics don't stay regional.",
-    "details": [],
-    "partOf": "TS"
+    "evidence": ""
   },
   {
     "code": "T13",
@@ -942,402 +417,40 @@ window.TOPICS = [
     "order": 34,
     "owner": "",
     "notes": "",
-    "title": "Support contact directory",
+    "title": "Channel and support contact analysis",
     "pillar": "cx",
     "urgent": false,
     "isNew": true,
     "plan": "",
-    "summary": "Different support emails and phone numbers by region and team. A placeholder directory exists; fill in each email, number, hours and owner.",
-    "details": [
-      {
-        "type": "To verify",
-        "text": "Fill in: NA and EMEA support emails, shared inbox, portal, Zendesk (co-managed), after-hours line, order management (Jessica), Costa Rica L1 (Rick), RMA (Jami), L2/L3 Wi-Fi and DECT."
-      }
-    ]
-  },
-  {
-    "code": "T14",
-    "bucket": "unsorted",
-    "order": 35,
-    "owner": "",
-    "notes": "",
-    "title": "AMIE: learn the platform",
-    "pillar": "tools",
-    "urgent": false,
-    "isNew": true,
-    "plan": "",
-    "summary": "AMIE is our software cloud and gives us remote access. Need to learn more about it.",
-    "details": []
+    "summary": "Analyze every support channel and contact: support emails and phone numbers differ by region and team. Fill in each email, number, hours and owner, then decide what to keep.",
+    "evidence": ""
   },
   {
     "code": "T15",
     "bucket": "unsorted",
-    "order": 36,
+    "order": 15,
     "owner": "",
     "notes": "",
-    "title": "Clean up Support & Professional Services SharePoint storage, set a data retention policy",
+    "title": "Gamification across education, support and knowledge",
     "pillar": "tools",
     "urgent": false,
     "isNew": true,
     "plan": "",
-    "summary": "Clean up storage on the Support and Professional Services SharePoint sites, and agree a data retention policy so it stays clean. Related: P16 (SharePoint cleanup and redesign) and T02 (2 TB migration cleanup).",
-    "details": [
-      {
-        "type": "Fact",
-        "text": "T02: IT says anything older than 10 years can be deleted; Mark from IT will delete it."
-      },
-      {
-        "type": "Target",
-        "text": "A written data retention policy: what to keep, for how long, and who signs off on deleting."
-      },
-      {
-        "type": "To verify",
-        "text": "How much storage do the Support and PS sites use today? What can be deleted or archived?"
-      },
-      {
-        "type": "To verify",
-        "text": "Does Spectralink already have a company retention policy (IT, Legal)? Any customer or contract rules on keeping records?"
-      }
-    ]
+    "summary": "Gamification in the tool stack: in education (LMS: points, badges, levels, leaderboards, certification paths), support (a customer and partner community with reputation, badges and recognition for answers) and knowledge (rewards for creating, rating and improving KB articles). Engagement should support learning and contribution, not become an end in itself.",
+    "evidence": ""
   },
   {
-    "code": "T16",
-    "bucket": "unsorted",
-    "order": 37,
+    "code": "Q01",
+    "bucket": "question",
+    "order": 14,
     "owner": "",
     "notes": "",
-    "title": "Customer experience touchpoints & login journey",
+    "title": "Forecasting: who owns it?",
     "pillar": "cx",
     "urgent": false,
-    "isNew": true,
+    "isNew": false,
     "plan": "",
-    "summary": "Map every place customers and partners are told to go or contact us across the journey, by team: spectralink.com, spectralink.com/support, Partner Universe, the LMS and more, with which ones need a separate login. Related: T03 (single sign-on), T10 (knowledge), T13 (contact directory), P03b (one support platform).",
-    "details": [
-      {
-        "type": "Fact",
-        "text": "Known touchpoints so far: spectralink.com, spectralink.com/support, Partner Universe, the LMS."
-      },
-      {
-        "type": "Fact",
-        "text": "The support portal is hosted in Salesforce; Zendesk is used for EMEA co-managed accounts (P03b)."
-      },
-      {
-        "type": "Fact",
-        "text": "Each regional support team has its own email address, all routing to one shared inbox (P03). After hours goes to MoneyPenny (T07)."
-      },
-      {
-        "type": "Fact",
-        "text": "Knowledge sits in several places: Salesforce portal PDFs, Zendesk articles, Partner Universe, spectralink.com and the support website (T10)."
-      },
-      {
-        "type": "Target",
-        "text": "One journey map: each stage (buy, onboard, learn, get support, renew), each audience (end customer, reseller, distributor), each team, the link or contact given, and the login needed."
-      },
-      {
-        "type": "To verify",
-        "text": "Which touchpoints need their own login, and how many logins does a partner or customer need today?"
-      },
-      {
-        "type": "To verify",
-        "text": "Where is each contact route published (welcome letter, website, portal, email signatures), and who owns each one?"
-      }
-    ]
-  }
-];
-
-// Tool stack: one row per tool need. status: "open" | "eval" | "decided" | "live"
-window.TOOLS = [
-  {
-    "id": "ticketing",
-    "name": "Ticketing and case management",
-    "need": "One place to log, route and track every support case, with queues by skill.",
-    "current": "Salesforce support portal; Zoho (North America L1/L2); Zendesk (EMEA co-managed accounts); a shared email inbox.",
-    "links": [
-      "P03",
-      "P03b"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 0
-  },
-  {
-    "id": "support-portal",
-    "name": "Customer and partner support portal",
-    "need": "One global front door to open and follow cases.",
-    "current": "Support portal hosted in Salesforce; spectralink.com/support.",
-    "links": [
-      "P03b",
-      "T16"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 1
-  },
-  {
-    "id": "knowledge",
-    "name": "Knowledge base and self-service",
-    "need": "Searchable technical bulletins, guides and answers.",
-    "current": "PDFs on the Salesforce portal (not searchable), Zendesk articles, Partner Universe, spectralink.com and the support website.",
-    "links": [
-      "T10"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 2
-  },
-  {
-    "id": "partner-portal",
-    "name": "Partner portal",
-    "need": "Partner resources, training and programs in one place.",
-    "current": "Partner Universe. Overlaps with the support portal: merge or connect?",
-    "links": [
-      "T05"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 3
-  },
-  {
-    "id": "lms",
-    "name": "LMS",
-    "need": "Deliver and track education for partners, customers and employees.",
-    "current": "An LMS is in use; which one, and who can access it, is still to confirm.",
-    "links": [
-      "T11",
-      "P06"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 4
-  },
-  {
-    "id": "authoring",
-    "name": "Learning authoring and AI video",
-    "need": "Build courses, quick learning and video efficiently.",
-    "current": "No authoring tool like Articulate known. Content is mostly video.",
-    "links": [
-      "T11",
-      "P06"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 5
-  },
-  {
-    "id": "project-mgmt",
-    "name": "Project management",
-    "need": "Track CX projects and priorities, including on-site work.",
-    "current": "ClickUp is the chosen tool; pilot with the CHS project.",
-    "links": [
-      "P13",
-      "P18"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 6
-  },
-  {
-    "id": "crm",
-    "name": "CRM and opportunities",
-    "need": "Accounts, opportunities, quotes and renewal opportunities.",
-    "current": "Salesforce.",
-    "links": [
-      "N20",
-      "P01"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 7
-  },
-  {
-    "id": "erp",
-    "name": "ERP: orders, contracts and entitlement",
-    "need": "POs, contracts, entitlement and order management.",
-    "current": "Oracle. Data flows from Oracle to Salesforce.",
-    "links": [
-      "P01",
-      "P05"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 8
-  },
-  {
-    "id": "install-base",
-    "name": "Install base and entitlement",
-    "need": "Which end customer has which devices and contracts, so tickets can check entitlement.",
-    "current": "Not decided: Salesforce or Oracle.",
-    "links": [
-      "T04"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 9
-  },
-  {
-    "id": "integration",
-    "name": "Integrations and data layer",
-    "need": "Every tool reads customer, contract and entitlement data from one source.",
-    "current": "Not set up. Depends on Salesforce and Oracle licences owned.",
-    "links": [
-      "T01"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 10
-  },
-  {
-    "id": "sso",
-    "name": "Single sign-on",
-    "need": "One login for the portal, knowledge, LMS and partner portal.",
-    "current": "None today.",
-    "links": [
-      "T03",
-      "T16"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 11
-  },
-  {
-    "id": "csat",
-    "name": "CSAT and surveys",
-    "need": "One survey process, matched to the agent, inside the ticketing tool.",
-    "current": "SurveyMonkey, set up per agent.",
-    "links": [
-      "T06"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 12
-  },
-  {
-    "id": "after-hours",
-    "name": "After-hours and on-call paging",
-    "need": "Priority-based paging tied to tickets.",
-    "current": "MoneyPenny calls people until someone answers, for all priorities.",
-    "links": [
-      "T07"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 13
-  },
-  {
-    "id": "reporting",
-    "name": "Reporting and dashboards",
-    "need": "One KPI layer across Oracle, Salesforce and ticketing.",
-    "current": "No common reporting layer.",
-    "links": [
-      "T12",
-      "P12"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 14
-  },
-  {
-    "id": "intranet",
-    "name": "Intranet and CX homepage",
-    "need": "One home for CX processes, contacts and links.",
-    "current": "SharePoint, needs cleanup and redesign.",
-    "links": [
-      "P09",
-      "P16",
-      "T15"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 15
-  },
-  {
-    "id": "catalog-quoting",
-    "name": "Service catalog and quoting",
-    "need": "What each service includes, who delivers it, and quoting.",
-    "current": "No catalog in one place. Likely Salesforce.",
-    "links": [
-      "P10"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 16
-  },
-  {
-    "id": "renewals",
-    "name": "Renewals and customer success",
-    "need": "Reminders, auto-renewal, QBRs and account health.",
-    "current": "No auto-renewal today. Salesforce holds renewal opportunities, Oracle the contracts.",
-    "links": [
-      "N20",
-      "P05"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 17
-  },
-  {
-    "id": "translation",
-    "name": "Localization and translation",
-    "need": "Knowledge and training in EMEA partners' languages.",
-    "current": "None in place.",
-    "links": [
-      "T09"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 18
-  },
-  {
-    "id": "ai",
-    "name": "AI assistants",
-    "need": "Ticket routing, agent assist, knowledge creation, self-service deflection.",
-    "current": "Zendesk chatbot and articles for EMEA managed services only.",
-    "links": [
-      "P02",
-      "P17"
-    ],
-    "strategy": "",
-    "selected": "",
-    "owner": "",
-    "status": "open",
-    "order": 19
+    "summary": "Not a priority: an open question to figure out. Who owns forecasting, and where should it sit once auto-renewal is live?",
+    "evidence": ""
   }
 ];

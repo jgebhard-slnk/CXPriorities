@@ -1,68 +1,41 @@
 # Global CX Priority Review
 
-The priorities board for the review with Steffi: 36 topics, each with its discovery notes (Fact, To verify, Idea, Target) under "Discovery notes".
+The priorities board for the review with Steffi: 29 projects on the board (the tool topics now sit inside one **Tool stack strategy** project), each with its discovery notes. Four views: **List**, **Board** (drag between buckets), **Timeline** (Gantt) and **Tools** (the tool stack, one row per tool need).
 
-**Confidentiality:** this file has no sales or SKU figures, but it does include colleagues' names and customer and partner names (for example Nestlé, CHS, ProMix, Axius). Publish it with GitHub Pages only if Step 3 below shows the **Private** option. Otherwise keep the repository private and open `index.html` from a downloaded copy.
+## Before you publish
+
+GitHub Pages sites on a personal account are **public**. Anyone with the link can open the page and read `data/topics.js`. This version holds no sales or SKU figures, but it does include colleagues' and customers' names.
+
+GitHub Pages has nowhere to store changes. On this copy, edits stay **in each person's own browser**. The shared version on claude.ai saves changes for everyone; use that one for the review itself.
 
 ## What's in the folder
 
 | File | What it is |
 |---|---|
 | `index.html` | The page. You rarely need to touch it. |
-| `data/topics.js` | The priorities: bucket, owner, notes, order and text. **This is the file you edit.** |
+| `data/topics.js` | The priorities (bucket, timeframe, owner, notes, context, text) and the tool list (status, selected tool, owner, strategy). This is the file you update. |
+| `README.md` | This file. |
 
-Keep `data/topics.js` inside a folder called `data`, next to `index.html`.
+Keep `topics.js` inside a folder called `data`, next to `index.html`.
 
-## Already uploaded the first version?
+## Set up (about 5 minutes)
 
-Replace both files: upload the new `index.html` and the new `data/topics.js` over the old ones (Add file → Upload files, then Commit). If you already sorted topics or added notes in the old file, tell me before you replace it and I'll merge your changes in, or copy your buckets, owners and notes across by hand.
+1. In the repository, click **Add file → Upload files**. Drag in `index.html`, `README.md` and the whole `data` folder, then click **Commit changes**. Replace the old files if GitHub asks.
+2. Go to **Settings → Pages**. Set Source to **Deploy from a branch**, Branch to **main**, folder to **/ (root)**, and click **Save**.
+3. Wait 1–2 minutes and refresh. The live link appears at the top of that Pages screen.
 
-## Setup, one step at a time
+## Using the page
 
-**Step 1: Upload the files**
-1. Unzip the download. You'll see `index.html`, `README.md` and a `data` folder.
-2. Open your repository in GitHub and click **Add file → Upload files**.
-3. Drag in `index.html`, `README.md` and the whole `data` folder, then click **Commit changes**.
-4. Check: the repository's front page lists `data/`, `index.html` and `README.md`.
+- **Bucket:** click the bucket pill in the List, drag a card on the Board, or open a topic and pick Now, Next, Later, Park or To sort.
+- **Timeframe:** click the timeframe. Pick a start (Day 0 to 180) and a finish (30 to 210 days), or enter exact dates with the calendar.
+- **Context:** click the speech-bubble count, or open a topic. Add an owner, decision notes and dated context entries.
+- **Tools:** open the Tools tab and click a tool to set its status, selected tool, owner and strategy. **+ Add a tool** adds a row.
+- **Excel:** **Export to Excel** downloads one workbook with four sheets: all priorities, added context, decision notes, and the tool stack.
 
-**Step 2: Turn on GitHub Pages**
-1. Click **Settings**, then **Pages** in the left sidebar.
-2. Under "Build and deployment", set **Source = Deploy from a branch**, **Branch = main** and **Folder = / (root)**, then click **Save**.
+## Saving changes to GitHub, so everyone sees them
 
-**Step 3: Check who can see it**
-- If you see a **GitHub Pages visibility** dropdown, choose **Private**. Only signed-in members of your organization can open the site.
-- If there's no dropdown, the site is public to anyone with the link, even though the repository is private. That's why this version has no sales data.
-- If it asks you to upgrade or make the repository public, Pages isn't available on this account for a private repository.
+1. Click **Save to GitHub** in the orange note at the top of the page. The page copies the full contents of `data/topics.js`.
+2. In GitHub, open `data/topics.js`, click the **pencil icon**, select all (Ctrl+A), paste, and click **Commit changes**.
+3. The live page updates within about a minute.
 
-**Step 4: Open the site**
-Wait about a minute, then refresh the Pages screen and click **Visit site**.
-
-## Updating the priorities
-
-### During the review, on the page
-1. Use the dropdowns to set each topic to Now, Next, Later or Park. Type an owner and notes, and use the arrows to reorder.
-   These changes are saved in your browser only. The page shows "Unsaved changes" until you save them to GitHub.
-2. Click **Copy for GitHub**.
-3. In GitHub, open `data/topics.js` and click the **pencil icon**. Select all (Ctrl+A or Cmd+A), paste, and click **Commit changes**.
-4. The live page updates in about a minute, and everyone sees the same priorities.
-
-"Discard my changes" throws away your browser's unsaved edits and goes back to what's in GitHub.
-
-### Straight in GitHub
-Open `data/topics.js`, click the pencil, and change the values between the quotes. To add a discovery note, copy a line inside `"details"` such as `{ "type": "Fact", "text": "..." },` and change the text:
-
-```
-"bucket": "now",      ← now, next, later, park or unsorted
-"order": 0,           ← position inside its bucket; 0 is the top
-"owner": "Jennifer",
-"notes": "Pilot starts in November",
-```
-
-Rules:
-- Keep the double quotes around text, and a comma at the end of every line except the last one in a `{ }` block.
-- To add a topic, copy a whole `{ … },` block and change the code and text.
-- To remove a topic, delete its whole `{ … },` block.
-- If the page says "No topics found" after a commit, there's a typo, usually a missing comma or quote. Open the file's **History** to compare with the previous version, and fix or revert.
-
-### Changing page wording
-Open `index.html`, click the pencil, find the sentence with Ctrl+F, change it and commit. Leave the code between `<script>` tags alone.
+If the page shows "No topics found" after a commit, the file has a typo, usually a missing comma or quote. Open the file's **History**, compare it with the previous version, and fix or revert it.
